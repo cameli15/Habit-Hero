@@ -1,5 +1,8 @@
 """ Theses are the classes and docstrings for our project."""
 
+import argparse
+import sys
+
 class User:
     def __init__(self, user_id, username, password):
         self.user_id = user_id
@@ -24,3 +27,13 @@ class Tracker:
         
     def add_habit(self, habit):
         self.habits[habit.id] = habit
+
+
+def parse_args(args_list):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('path', type=str, help='Path to the text file')
+    return parser.parse_args(args_list)
+
+if __name__ == "__main__":
+    args = parse_args(sys.argv[1:])
+    print(args.path)
