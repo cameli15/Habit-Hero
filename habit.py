@@ -1,65 +1,29 @@
-""" Theses are the classes and docstrings for our project."""
+""" This is the Habit Class."""
 
-import argparse
-import sys
+import sqlite3
 
-class User:
-    """ This is the class for the user 
 
-    Attributes: 
-        user_id: This is the user id 
-        username (str): this is the username for the user
-        password (str): the password of the user
-    """
-    def __init__(self, user_id, username, password):
-        self.user_id = user_id 
-        self.username = username
-        self.password = password
-        
-class Manager:
-    """ This is the class for managing the users and storing them in a 
-        dictionary
-    
-        Attributes: 
-            users: this is for storing the users
-    """
-    def __init__(self):
-        self.users = {}
-        
 class Habit:
-    """ This represents a habit
+    """Class used to represent habits."""
     
-        Attributes: 
-            user_id: the user id of the user 
-            name: 
-            category: 
-            frequency: 
-            streak: 
-    """
-    def __init__(self, user_id, name, category, frequency, streak: str=None, database=" "):
-        self.user_id = user_id
-        self.name = name
-        self.category = category
-        self.frequency = frequency
-        self.streak = 0
+    # this is where our init method will go
+    def __init__(self, habit_name, member, category, frequency, creation_timestamp):
+        """
+        Initialize an instance of the Habit Class, creating the initial attributes and establishing a database connection.
         
-class Tracker:
-    """ It manages habits and stores them 
-    """
-    def __init__(self):
-        self.habits = {}
+        Parameters:
+            habit_name (str) - name of habit
+            member (str) - indivdual member associated with a habit
+            category (str) - category habit is in ('health', 'work', 'leisure')
+            frequency (str) - frequency of habit ('daily' or 'weekly')
+            creation_timestamp (datetime) - date/time when habit was created
         
-    def add_habit(self, habit):
-        self.habits[habit.id] = habit
-
-
-def parse_args(args_list):
-    """
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument('path', type=str, help='Path to the text file')
-    return parser.parse_args(args_list)
-
-if __name__ == "__main__":
-    args = parse_args(sys.argv[1:])
-    print(args.path)
+        Attributes:
+            self.habit_name (str) - stores the name of the habit
+            self.member (str) - stores member's habit
+            self.category (str) - stores category of habit
+            self.frequency (str) - stores frequency of habit
+            self.creation_timestamp (datetime) - stores date/time creation of habit
+            
+        This method sets up a connection to the SQLite database. It initializes a cursor for executing database operations.  
+        """
