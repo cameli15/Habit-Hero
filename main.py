@@ -3,12 +3,13 @@
 
 from PyInquirer import prompt
 import login
+import user
 
 # creates database
 login.launch_database()
 
 # program starts and we'll implement an opening message
-welcome_message = "\n" # write into message
+welcome_message = "\nHello! Welcome to Habit Hero!\n" # write into message
 
 print(welcome_message)
 
@@ -48,3 +49,40 @@ def menu():
     Asks user what they want to do from a list of choices.
     """
     # ex: mark habit as complete, view habits, create habit, delete habit, exit
+    
+    choices = [
+        "Mark habit as complete",
+        "View habits",
+        "Create habit",
+        "Delete habit",
+        "Exit"
+    ]
+    
+    questions = [
+        {
+            'type': 'list',
+            'name': 'option',
+            'message': 'What would you like to do?',
+            'choices': choices
+        }
+    ]
+    
+    while True:
+        answer = prompt(questions)
+        option = answer['option']
+        
+        if option == "Mark habit as complete":
+            user.mark_habit()
+            
+        elif option == "View habits":
+            user.show_all()
+            
+        elif option == "Create habit":
+            user.create_habit()
+            
+        elif option == "Delete habit":
+            user.delete_habit()
+            
+        elif option == "Exit":
+            print("Goodbye!")
+            break
