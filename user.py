@@ -3,6 +3,7 @@
 import sqlite3
 import habit
 from PyInquirer import prompt
+import hashlib
 
 class User:
     """
