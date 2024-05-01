@@ -64,8 +64,8 @@ class User:
 # shows user current streak overview of all their habits stored by frequency
     def current_streak_overview(self):
 
+# edit a habit
+    def edit_habit(self):
 
-
-
-        
-    
+# mark a habit as complete
+    def mark_habit(self):
