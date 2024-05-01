@@ -48,7 +48,7 @@ class User:
 # function to retrieve habit from the db
     def retrieve_habit(self, habit_name):
 
-# maybe we can have present choices for users to choose from so we can demonstrate the program, we don't need it if you guys dont think its neccesary
+# maybe we can have preset choices for users to choose from so we can demonstrate the program, we don't need it if you guys dont think its neccesary
     def choose_preset_habit(self):
 
      # where user can create a habit
