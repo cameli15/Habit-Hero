@@ -33,16 +33,18 @@ class Habit:
         self.frequency = frequency
         self.creation_timestamp = creation_timestamp
 
-        #Connecting to database
-        self.conn = sqlite3.connect('main.db')
-        self.cursor = self.conn.cursor()
-        self.cursor.execute = ('''CREATE TABLE IF NOT EXISTS habits 
-                                (habit_name TEXT, member TEXT, category TEXT, frequency TEXT, creation_timestamp TEXT)''')
-        self.conn.commit ()
-    #Adding values to database
-    def add_to_table(self):
-        self.cursor.execute = ("INSERT INTO habits VALUES(?,?,?,?,?)", (self.habit_name, self.member, self.category, self.frequency, str (self.creation_timestamp)))
-        self.conn.commit ()
-    #Closing the database connection
-    def close_connection(self):
-        self.conn.close ()
+    def get_db_connection():
+        db_path = Path(__file__).resolve().parent / 'main_db.db'
+        return sqlite3.connect(str(db_path))
+
+    def save(self):
+        conn = Habit.get_db_connection()
+        cursor = conn.cursor()
+        try:
+            cursor.execute("INSERT INTO habits (habit_name, member, category, frequency, creation_timestamp) VALUES (?, ?, ?, ?, ?)",
+                           (self.habit_name, self.member, self.category, self.frequency, self.creation_timestamp))
+            conn.commit()
+        except sqlite3.Error as e:
+            print(f"An error occurred: {e}")
+        finally:
+            conn.close()
