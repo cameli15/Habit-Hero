@@ -9,7 +9,7 @@ import user
 login.launch_database()
 
 # program starts and we'll implement an opening message
-welcome_message = "\nHello! Welcome to Habit Hero!\n" # write into message
+welcome_message = "\nHello! Welcome to Habit Hero!\n" 
 
 print(welcome_message)
 
