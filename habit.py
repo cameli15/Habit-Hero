@@ -1,7 +1,7 @@
 """ This is the Habit Class."""
 
 import sqlite3
-
+from pathlib import Path
 
 class Habit:
     """Class used to represent habits."""
