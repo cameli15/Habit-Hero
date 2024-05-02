@@ -91,7 +91,7 @@ def menu():
             user.delete_habit()
             print("\nWhat do you want to do next?\n")
             menu()
-             elif habit_question == 'Mark a habit as completed':
+        elif habit_question == 'Mark a habit as completed':
             user.is_completed()  
             print("\nWhat do you want to do next?\n")
             menu()
