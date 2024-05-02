@@ -27,3 +27,22 @@ class Habit:
             
         This method sets up a connection to the SQLite database. It initializes a cursor for executing database operations.  
         """
+        self.habit_name = habit_name
+        self.member = member
+        self.category = category
+        self.frequency = frequency
+        self.creation_timestamp = creation_timestamp
+
+        #Connecting to database
+        self.conn = sqlite3.connect('main.db')
+        self.cursor = self.conn.cursor()
+        self.cursor.execute = ('''CREATE TABLE IF NOT EXISTS habits 
+                                (habit_name TEXT, member TEXT, category TEXT, frequency TEXT, creation_timestamp TEXT)''')
+        self.conn.commit ()
+    #Adding values to database
+    def add_to_table(self):
+        self.cursor.execute = ("INSERT INTO habits VALUES(?,?,?,?,?)", (self.habit_name, self.member, self.category, self.frequency, str (self.creation_timestamp)))
+        self.conn.commit ()
+    #Closing the database connection
+    def close_connection(self):
+        self.conn.close ()
