@@ -48,41 +48,53 @@ def menu():
     
     Asks user what they want to do from a list of choices.
     """
-    # ex: mark habit as complete, view habits, create habit, delete habit, exit
-    
-    choices = [
-        "Mark habit as complete",
-        "View habits",
-        "Create habit",
-        "Delete habit",
-        "Exit"
-    ]
-    
-    questions = [
+    menu_choices = [
         {
             'type': 'list',
-            'name': 'option',
-            'message': 'What would you like to do?',
-            'choices': choices
+            'name': 'action',
+            'message': 'What do you want to do?',
+            'choices': [
+                'Create, Delete or Mark a Habit as completed',
+                'Activity Overview',
+                'View Habits',
+                Separator(),
+                'Exit Program'
+            ]
         }
     ]
-    
-    while True:
-        answer = prompt(questions)
-        option = answer['option']
-        
-        if option == "Mark habit as complete":
-            user.mark_habit()
-            
-        elif option == "View habits":
-            user.show_all()
-            
-        elif option == "Create habit":
-            user.create_habit()
-            
-        elif option == "Delete habit":
+
+    second_question = prompt(menu_choices)['action']
+
+    if second_question == 'Create, Delete or Mark a Habit as completed':
+        habit_choices = [
+            {
+                'type': 'list',
+                'name': 'habit_action',
+                'message': 'Do you want to:',
+                'choices': [
+                    'Create a new habit',
+                    'Delete habit',
+                    'Mark a habit as completed'
+                ]
+            }
+        ]
+        habit_question = prompt(habit_choices)['habit_action']
+
+        if habit_question == 'Create a new habit':
+            print("Let's create a new habit.\n")
+            new_habit = user.create_habit()
+            user.store_habit_in_db(new_habit)
+            print("\nWhat do you want to do next?\n")
+            menu()
+
+        elif habit_question == 'Delete habit':
             user.delete_habit()
-            
-        elif option == "Exit":
-            print("Goodbye!")
-            break
+            print("\nWhat do you want to do next?\n")
+            menu()
+             elif habit_question == 'Mark a habit as completed':
+            user.is_completed()  
+            print("\nWhat do you want to do next?\n")
+            menu()
+
+        elif second_question == 'Exit Program':
+            print(f"\nSee you soon, {user.firstname}!\n")   
