@@ -5,7 +5,7 @@ import sqlite3
 from pathlib import Path
 
 def launch_database():
-    """docstring here"""
+    """Creating and launching the database"""
     db_path = Path(__file__).resolve().parent / 'habithero_db.db'
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
