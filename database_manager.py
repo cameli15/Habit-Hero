@@ -1,4 +1,6 @@
 """docstring or line comments here explaining the code"""
+# make sure to add line comments throughout the code too
+
 import sqlite3
 from pathlib import Path
 
