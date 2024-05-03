@@ -37,7 +37,7 @@ def launch_database():
 
         # creating the table for progress
         cursor.execute("""
-            CREATE TABLE IF NOT EXISTS progress (
+            CREATE TABLE IF NOT EXISTS habit_data (
                 habit_name TEXT,
                 frequency TEXT,
                 member TEXT,
