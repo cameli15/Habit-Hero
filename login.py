@@ -6,7 +6,12 @@ from os.path import join, dirname, abspath
 
 # launch database and establish a connection
 def launch_database():
-    """Contains 3 tables: users, habits, and habit_data that will contain all of our program's data into a database"""
+    """Contains 3 tables: users, habits, and habit_data that will contain all of 
+        our program's data into a database
+        
+        Side effects:
+            Creating the tables if they were not already created
+    """
     db_path = join(dirname(abspath(__file__)), 'main_db.db')
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
@@ -39,7 +44,12 @@ def launch_database():
 
 # user interaction for registration (will use questionary)
 def register_user():
-    """docstring here"""
+    """ This function allows the user to register an account for them
+
+        Side effects: 
+            Creating the firstname, username, and password and putting it in 
+            the database
+    """
     firstname = questionary.text("What is your first name? ",
                                  validate=None).ask()
     username = questionary.text("What is your username? ",
@@ -59,7 +69,15 @@ def register_user():
 
 
 def get_user(username):
-    """docstring here"""
+    """This is to find the user through their username in the database
+    
+    Args: 
+        username(str): the username of the user
+
+    Returns: 
+        user: the user's password, first name and username
+        None
+    """
     db_path = join(dirname(abspath(__file__)), 'main_db.db')
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
@@ -75,7 +93,11 @@ def get_user(username):
 
 
 def login():
-    """docstring here"""
+    """This is for the user to login with their username and password
+    
+    Returns: 
+        user: the user's password, first name and username 
+    """
     user_name = questionary.text("Enter username:").ask()
     user = get_user(user_name)
     
@@ -88,8 +110,9 @@ def login():
 
 
 def check_password(password):
-    """docstring here"""
-    
+    """This is to check if the input by the user matches the password that 
+        that is saved into the database
+    """
     password_input = questionary.password("Enter your password: ").ask()
     password_input = hashlib.sha256(password_input.encode('utf-8')).hexdigest()
     if password_input == password:
