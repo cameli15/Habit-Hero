@@ -6,17 +6,17 @@ from os.path import join, dirname, abspath
 
 # launch database and establish a connection
 def launch_database():
-    """Contains 3 tables: users, habits, and habit_data that will contain all of 
-        our program's data into a database
-        
-        Side effects:
-            Creating the tables if they were not already created
     """
-    db_path = join(dirname(abspath(__file__)), 'main_db.db')
+    Initialize and set up a SQLite database with tables to store user and habit data.
+
+    Effects:
+        - Creates a database file 'habithero_db.db' if it doesn't exist.
+        - Establishes three tables in the database: 'users', 'habits', and 'habit_data'.
+    """
+    db_path = join(dirname(abspath(__file__)), 'habithero_db.db')
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
         
-        # create the table for storing users and their information
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 firstname TEXT,
@@ -25,8 +25,7 @@ def launch_database():
                 password TEXT
             )
         """)
-
-        # creating the table for habits
+        
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habits (
                 habit_name TEXT,
@@ -37,7 +36,6 @@ def launch_database():
             )
         """)
 
-        # creating the table for habit and its data
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habit_data (
                 habit_name TEXT,
@@ -47,7 +45,7 @@ def launch_database():
             )
         """)
 
-# user interaction for registration (will use questionary)
+
 def register_user():
     """ This function allows the user to register an account for them
 
