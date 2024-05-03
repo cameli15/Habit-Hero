@@ -41,42 +41,57 @@ def launch database():
 
 # user interaction for registration (will use questionary)
 def register_user():
-  """users will give their first name, username, password, and we will check their password using hashlib"""
+    """docstring here"""
     firstname = questionary.text("What is your first name? ",
                                  validate=None).ask()
-    # code for the rest will go here
-
-    # we have to check if their username is original and pull user data from our user file and class
-    new_user = user.User(firstname, username, password)
-    users = get_user(username)
-    if users:
+    username = questionary.text("What is your username? ",
+                                validate=None).ask()
+    password = questionary.password("What is your password? ",
+                                    validate=None).ask()
+    password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    
+    
+    new_user = userhabit.User(firstname, username, password)
+    user = get_user(username)
+    if user:
         print("\nThis username already exists. Try again!\n")
         register_user()
-
     else:
         new_user.store_in_db()
         print("\nRegistration successful!\n")
 
-  # function to retreive user data from the database
-  def retrieve_user(username):
-    """"pull user info from database"""
 
-  # user login process that will also connect to the main.py file
+def get_user(username):
+    """docstring here"""
+    db_path = Path(__file__).resolve().parent / 'habithero_db.db'
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+    cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
+    list_of_users = cur.fetchall()
+
+    if len(list_of_users) > 0:
+        firstname, username, password = list_of_users[0]
+        user = userhabit.User(firstname, username, password)
+        return user
+    else:
+        return None
+
+
 def login():
-    """ function that lets users login"""
+    """docstring here"""
     user_name = questionary.text("Enter username:").ask()
-    users = get_user(user_name)
+    user = get_user(user_name)
     
-    if users: 
-        check_password(users.password)
-        return users
+    if user: 
+        check_password(user.password)
+        return user
     else: 
         print("\nWrong username! Try again\n")
         login()
 
-# Function to check user's password
+
 def check_password(password):
-    """function to check the user password"""
+    """docstring here"""
     password_input = questionary.password("Enter your password: ").ask()
     password_input = hashlib.sha256(password_input.encode('utf-8')).hexdigest()
     if password_input == password:
@@ -84,6 +99,3 @@ def check_password(password):
     else:
         print("\nPassword incorrect. Try again!\n")
         check_password(password)
-  
-  
-  
