@@ -8,7 +8,7 @@ from pathlib import Path
 def launch_database():
     """Creating and launching the database
     
-    Sideeffects:
+    Side effects:
         Creating new database files for the following tables: 
             habits
             users

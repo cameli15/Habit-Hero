@@ -58,8 +58,11 @@ def register_user():
                                     validate=None).ask()
     password = hashlib.sha256(password.encode('utf-8')).hexdigest()
     
+    # create a new entry for a new user 
     new_user = userhabit.User(firstname, username, password)
     user = get_user(username)
+
+    # checking if the username is already in the database
     if user:
         print("\nThis username already exists. Try again!\n")
         register_user()
@@ -69,7 +72,8 @@ def register_user():
 
 
 def get_user(username):
-    """This is to find the user through their username in the database
+    """This is to find the user through checking for their username in the 
+        database
     
     Args: 
         username(str): the username of the user
@@ -81,9 +85,12 @@ def get_user(username):
     db_path = join(dirname(abspath(__file__)), 'main_db.db')
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
+
+    #using a sql query to go through the user table to find the username
     cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
     list_of_users = cur.fetchall()
 
+    # takes the user's information and returns it 
     if len(list_of_users) > 0:
         firstname, username, password = list_of_users[0]
         user = userhabit.User(firstname, username, password)
