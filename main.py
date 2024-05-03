@@ -4,7 +4,12 @@ import database_manager
 
 
 def program_menu():
-    """docstring here"""
+    """This is the menu of the program
+    
+    Returns: 
+        user: the user's first name, username and password 
+        None
+    """
     database_manager.launch_database()
     
     print("\nHello! Welcome to Habit Hero!\n")
@@ -51,7 +56,11 @@ def program_menu():
 
 
 def main():
-    """docstring here"""
+    """This is the main function
+    
+    Raises: 
+        Exception e: If there is an error somehow
+    """
     try:
         user = program_menu()
         if not user:
