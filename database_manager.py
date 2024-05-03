@@ -14,7 +14,8 @@ def launch_database():
     db_path = Path(__file__).resolve().parent / 'habithero_db.db'
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
-        
+
+        #create useres table to store data
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 firstname TEXT,
@@ -23,6 +24,7 @@ def launch_database():
             )
         """)
 
+        #create habits table to store habits
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habits (
                 habit_name TEXT,
@@ -33,6 +35,7 @@ def launch_database():
             )
         """)
 
+        #creates habit_data table to store habit data
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habit_data (
                 habit_name TEXT,
