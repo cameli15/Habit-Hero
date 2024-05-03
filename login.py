@@ -1,15 +1,13 @@
-""" This is our login.py file. This is where we will create our database and manage user data and activity"
-
-import user
+import userhabit
 import hashlib
 import sqlite3
 import questionary
 from os.path import join, dirname, abspath
 
 # launch database and establish a connection
-def launch database():
-  """ Contains 3 tables: users, habits, and habit_data that will contain all of our programs data into a database"""
-  db_path = join(dirname(abspath(__file__)), 'main_db.db')
+def launch_database():
+    """Contains 3 tables: users, habits, and habit_data that will contain all of our program's data into a database"""
+    db_path = join(dirname(abspath(__file__)), 'main_db.db')
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
         
@@ -50,7 +48,6 @@ def register_user():
                                     validate=None).ask()
     password = hashlib.sha256(password.encode('utf-8')).hexdigest()
     
-    
     new_user = userhabit.User(firstname, username, password)
     user = get_user(username)
     if user:
@@ -63,7 +60,7 @@ def register_user():
 
 def get_user(username):
     """docstring here"""
-    db_path = Path(__file__).resolve().parent / 'habithero_db.db'
+    db_path = join(dirname(abspath(__file__)), 'main_db.db')
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
     cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
