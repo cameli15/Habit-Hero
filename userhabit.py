@@ -112,7 +112,6 @@ class User:
         
         habit_name = questionary.text("What is your new habit?",
                                       validate=None).ask()
-        
         member = self.username
         
         category = questionary.select("Which category does your habit belong in?:",
@@ -143,7 +142,9 @@ class User:
             return new_habit
         
     def delete_habit(self):
-        """This function allows the user to delete a habit from their account"""
+        """
+        This function allows the user to delete a habit from their account
+        """
         habit_name = questionary.text("Which habit would you like to delete?",
                                       validate=None).ask()
         
