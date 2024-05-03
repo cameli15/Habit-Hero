@@ -92,6 +92,7 @@ def login():
 
 def check_password(password):
     """docstring here"""
+    
     password_input = questionary.password("Enter your password: ").ask()
     password_input = hashlib.sha256(password_input.encode('utf-8')).hexdigest()
     if password_input == password:
