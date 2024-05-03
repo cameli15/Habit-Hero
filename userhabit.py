@@ -1,5 +1,5 @@
 """docstring explaining file and code here"""
-
+# make sure to add line comments throughout the code too
 import sqlite3
 from datetime import datetime
 from pathlib import Path
