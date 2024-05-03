@@ -1,12 +1,12 @@
-""" This is the Habit Class."""
+""" This is our Habit Class."""
 
 import sqlite3
 from pathlib import Path
 
+
 class Habit:
     """Class used to represent habits."""
     
-    # this is where our init method will go
     def __init__(self, habit_name, member, category, frequency, creation_timestamp):
         """
         Initialize an instance of the Habit Class, creating the initial attributes and establishing a database connection.
@@ -32,19 +32,8 @@ class Habit:
         self.category = category
         self.frequency = frequency
         self.creation_timestamp = creation_timestamp
-
-    def get_db_connection():
-        db_path = Path(__file__).resolve().parent / 'main_db.db'
-        return sqlite3.connect(str(db_path))
-
-    def save(self):
-        conn = Habit.get_db_connection()
-        cursor = conn.cursor()
-        try:
-            cursor.execute("INSERT INTO habits (habit_name, member, category, frequency, creation_timestamp) VALUES (?, ?, ?, ?, ?)",
-                           (self.habit_name, self.member, self.category, self.frequency, self.creation_timestamp))
-            conn.commit()
-        except sqlite3.Error as e:
-            print(f"An error occurred: {e}")
-        finally:
-            conn.close()
+    
+    
+        db_path = Path(__file__).parent / "main_db.db"
+        self.conn = sqlite3.connect(str(db_path))
+        self.cur = self.conn.cursor()
