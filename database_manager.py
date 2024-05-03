@@ -15,7 +15,7 @@ def launch_database():
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
 
-        #create useres table to store data
+        #create users table to store data
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 firstname TEXT,
