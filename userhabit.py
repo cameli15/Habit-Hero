@@ -32,6 +32,7 @@ class Habit:
         self.frequency = frequency
         self.creation_timestamp = creation_timestamp
     
+        # makes a path to the database
         db_path = Path(__file__).parent / "habithero_db.db"
         self.conn = sqlite3.connect(str(db_path))
         self.cur = self.conn.cursor()
@@ -46,6 +47,13 @@ class User:
         password (str): the password of the user 
     """
     def __init__(self, firstname, username, password):
+        """ Intializing the user entry with the following attributes: 
+            firstname, username and password
+
+        Attributes: 
+            Please see the class attributes above. 
+        
+        """
         self.firstname = firstname
         self.username = username
         self.password = password
@@ -54,14 +62,16 @@ class User:
         self.conn = sqlite3.connect(str(db_path))
         self.cur = self.conn.cursor()
 
-
     def store_in_db(self):
-        """docstring here"""
+        """ This function put the user entry and all of the information related 
+            to the user entry into the habithero using SQL commands
+        
+            Args: 
+                self: the user entry 
+        """
         self.cur.execute("INSERT INTO users VALUES (?, ?, ?)",
                          (self.firstname, self.username, self.password))
         self.conn.commit()
-        
-        
         
     def check_habit(self, habit_name):
         """docstring here"""
@@ -73,7 +83,6 @@ class User:
             return habits
         else:
             return None    
-        
         
     def add_habit(self):
         """docstring here"""
@@ -107,7 +116,6 @@ class User:
             print("\nSuccessfully created a new habit!\n")
             return new_habit
         
-
     def delete_habit(self):
         """docstring here"""
         habit_name = questionary.text("Which habit would you like to delete?",
@@ -138,7 +146,6 @@ class User:
             print("You've completed your habit. Congrats!")
         else:
             print("Oops! This isn't one of your habits.")
-    
     
     def show_all(self):
         """
