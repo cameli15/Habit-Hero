@@ -4,7 +4,8 @@ import database_manager
 
 
 def program_menu():
-    """This is the menu of the program
+    """
+    This is the menu of the Habit Hero program
     
     Returns: 
         user: the user's first name, username and password 
@@ -56,7 +57,8 @@ def program_menu():
 
 
 def main():
-    """This is the main function
+    """
+    This is the main function
     
     Raises: 
         Exception e: If there is an error somehow
