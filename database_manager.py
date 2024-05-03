@@ -3,13 +3,13 @@ import sqlite3
 from pathlib import Path
 
 def launch_database():
-    """Creating and launching the database
-    
-    Side effects:
-        Creating new database files for the following tables: 
-            habits
-            users
-            progress
+    """
+    Initializes and sets up a local SQLite database for our program.
+
+    Tables:
+        - users: contains users information (name, username, password)
+        - habits: stores the habits, category, and frequency of users
+        - progress: logs the progress of each habit for users
     """
     db_path = Path(__file__).resolve().parent / 'habithero_db.db'
     with sqlite3.connect(db_path) as conn:
