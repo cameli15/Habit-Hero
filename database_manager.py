@@ -9,13 +9,12 @@ def launch_database():
     Tables:
         - users: contains users information (name, username, password)
         - habits: stores the habits, category, and frequency of users
-        - progress: logs the progress of each habit for users
+        - habit_data: logs the data of each habit for users
     """
     db_path = Path(__file__).resolve().parent / 'habithero_db.db'
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
         
-        # creating the table for users
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 firstname TEXT,
@@ -24,7 +23,6 @@ def launch_database():
             )
         """)
 
-        #creating the table for habits
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habits (
                 habit_name TEXT,
@@ -35,7 +33,6 @@ def launch_database():
             )
         """)
 
-        # creating the table for progress
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habit_data (
                 habit_name TEXT,
