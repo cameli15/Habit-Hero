@@ -5,7 +5,8 @@ from pathlib import Path
 import questionary 
 
 class Habit:
-    """Class used to represent habits.
+    """
+    Class used to represent habits.
     
     Attributes:
         habit_name (str) - name of habit
@@ -64,11 +65,12 @@ class User:
         self.cur = self.conn.cursor()
 
     def store_in_db(self):
-        """ This function put the user entry and all of the information related 
-            to the user entry into the habithero using SQL commands
+        """ 
+        This function put the user entry and all of the information related 
+        to the user entry into the habithero using SQL commands
         
-            Args: 
-                self: the user entry 
+        Args: 
+            self: the user entry 
         """
 
         # inserts the user entry to the user table in the database
@@ -77,8 +79,9 @@ class User:
         self.conn.commit()
         
     def check_habit(self, habit_name):
-        """This function checks to see if the user has been doing that habit
-           under the username.
+        """
+        This function checks to see if the user has been doing that habit
+        under the username.
 
         Returns: 
             habits: the habit entry associated with the user in the database
@@ -97,8 +100,9 @@ class User:
             return None    
         
     def add_habit(self):
-        """This function allows the user to add a new habit for their account
-            as well as adding the habit into the database for future reference.
+        """
+        This function allows the user to add a new habit for their account
+        as well as adding the habit into the database for future reference.
 
         Args: 
             self: the username entry and the habit entry associated with it
@@ -140,8 +144,7 @@ class User:
             return new_habit
         
     def delete_habit(self):
-        """This function allows the user to delete a habit from their account
-        """
+        """This function allows the user to delete a habit from their account"""
         habit_name = questionary.text("Which habit would you like to delete?",
                                       validate=None).ask()
         
@@ -156,12 +159,12 @@ class User:
             print("\nThis habit doesn't exist!\n")
     
     def habit_completed(self):
-        """This function allows user to log in their entry for whether or not 
-            they did their habit for the day. 
+        """
+        This function allows user to log in their entry for whether or not 
+        they did their habit for the day. 
         
         Args: 
             self: this is the user entry and the habit entry associated with it. 
-        
         """
     
         habit_completed = questionary.text("What habit do you want to mark as completed? ",
@@ -180,8 +183,10 @@ class User:
             print("Oops! This isn't one of your habits.")
     
     def show_all(self):
-        """ This allows the user to see the habits that the user put into the 
-            database
+        """ 
+        This allows the user to see the habits that the user put into the 
+        database
+        
         Args: 
             self: this is the user entry and the habit entry associated with it.
         
@@ -198,7 +203,8 @@ class User:
             
             
     def store_habit_in_db(self, new_habit):
-        """this function allows us to store the habit into the database
+        """
+        This function allows us to store the habit into the database
         
         Args: 
             self: this is the user entry and the habit entry associated with it.
