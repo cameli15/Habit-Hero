@@ -83,6 +83,9 @@ def check_password(password):
     """This is to check if the input by the user matches the password that 
         that is saved into the database. If it doesn't match, then it will loop 
         until it does.
+
+    Args: 
+        password (str): the password that the user inputed
     """
 
     password_input = questionary.password("Enter your password: ").ask()
