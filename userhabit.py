@@ -58,6 +58,7 @@ class User:
         self.username = username
         self.password = password
         
+        # makes a path to the database
         db_path = Path(__file__).parent / "habithero_db.db"
         self.conn = sqlite3.connect(str(db_path))
         self.cur = self.conn.cursor()
@@ -69,6 +70,8 @@ class User:
             Args: 
                 self: the user entry 
         """
+
+        # inserts the user entry to the user table in the database
         self.cur.execute("INSERT INTO users VALUES (?, ?, ?)",
                          (self.firstname, self.username, self.password))
         self.conn.commit()
