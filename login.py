@@ -2,49 +2,7 @@ import userhabit
 import hashlib
 import sqlite3
 import questionary
-from os.path import join, dirname, abspath
-
-# launch database and establish a connection
-def launch_database():
-    """
-    Initialize and set up a SQLite database with tables to store user and habit data.
-
-    Effects:
-        - Creates a database file 'habithero_db.db' if it doesn't exist.
-        - Establishes three tables in the database: 'users', 'habits', and 'habit_data'.
-    """
-    db_path = join(dirname(abspath(__file__)), 'habithero_db.db')
-    with sqlite3.connect(db_path) as conn:
-        cursor = conn.cursor()
-        
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                firstname TEXT,
-                lastname TEXT,
-                username TEXT PRIMARY KEY,
-                password TEXT
-            )
-        """)
-        
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS habits (
-                habit_name TEXT,
-                member TEXT,
-                category TEXT,
-                frequency TEXT,
-                creation_timestamp DATETIME
-            )
-        """)
-
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS habit_data (
-                habit_name TEXT,
-                frequency TEXT,
-                member TEXT,
-                creation_timestamp DATETIME
-            )
-        """)
-
+from os.path import join, dirname, abspath    
 
 def register_user():
     """ This function allows the user to register an account for them
