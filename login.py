@@ -16,6 +16,7 @@ def launch_database():
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
         
+        # create the table for storing users and their information
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
                 firstname TEXT,
@@ -24,6 +25,8 @@ def launch_database():
                 password TEXT
             )
         """)
+
+        # creating the table for habits
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habits (
                 habit_name TEXT,
@@ -33,6 +36,8 @@ def launch_database():
                 creation_timestamp DATETIME
             )
         """)
+
+        # creating the table for habit and its data
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS habit_data (
                 habit_name TEXT,
@@ -107,7 +112,9 @@ def login():
     """
     user_name = questionary.text("Enter username:").ask()
     user = get_user(user_name)
-    
+
+    # checking to see if the input of the user and the password connected to the 
+    # user's information in the datbase is correct    
     if user: 
         check_password(user.password)
         return user
@@ -118,10 +125,14 @@ def login():
 
 def check_password(password):
     """This is to check if the input by the user matches the password that 
-        that is saved into the database
+        that is saved into the database. If it doesn't match, then it will loop 
+        until it does.
     """
+
     password_input = questionary.password("Enter your password: ").ask()
     password_input = hashlib.sha256(password_input.encode('utf-8')).hexdigest()
+
+    # this is to check if it is the right password
     if password_input == password:
         print("\nLogin successful!\n")
     else:
