@@ -11,7 +11,7 @@ def program_menu():
         user: the user's first name, username and password 
         None
     """
-    database_manager.launch_database()
+    database_manager.launch_database() #connects file to database
     
     print("\nHello! Welcome to Habit Hero!\n")
     initial_message = questionary.select(
