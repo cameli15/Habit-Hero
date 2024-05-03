@@ -33,8 +33,8 @@ def register_user():
 
 
 def get_user(username):
-    """This is to find the user through checking for their username in the 
-        database
+    """
+    This is to find the user through checking for their username in the database
     
     Args: 
         username(str): the username of the user
@@ -61,7 +61,8 @@ def get_user(username):
 
 
 def login():
-    """This is for the user to login with their username and password
+    """
+    This is for the user to login with their username and password
     
     Returns: 
         user: the user's password, first name and username 
@@ -80,9 +81,10 @@ def login():
 
 
 def check_password(password):
-    """This is to check if the input by the user matches the password that 
-        that is saved into the database. If it doesn't match, then it will loop 
-        until it does.
+    """
+    This is to check if the input by the user matches the password that 
+    that is saved into the database. If it doesn't match, then it will loop 
+    until it does.
 
     Args: 
         password (str): the password that the user inputed
