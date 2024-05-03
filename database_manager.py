@@ -1,1 +1,37 @@
+"""docstring or line comments here explaining the code"""
+import sqlite3
+from pathlib import Path
 
+def launch_database():
+    """docstring here"""
+    db_path = Path(__file__).resolve().parent / 'habithero_db.db'
+    with sqlite3.connect(db_path) as conn:
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                firstname TEXT,
+                username TEXT PRIMARY KEY,
+                password TEXT
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS habits (
+                habit_name TEXT,
+                member TEXT,
+                category TEXT,
+                frequency TEXT,
+                creation_timestamp DATETIME
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS progress (
+                habit_name TEXT,
+                frequency TEXT,
+                member TEXT,
+                creation_timestamp DATETIME
+            )
+        """)
+        
+    conn.commit()
+    conn.close()
