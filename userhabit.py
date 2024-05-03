@@ -1,4 +1,4 @@
-"""docstring explaining file and code here"""
+"""this is where all of the habits function are stored and used"""
 # make sure to add line comments throughout the code too
 import sqlite3
 from datetime import datetime
@@ -6,7 +6,15 @@ from pathlib import Path
 import questionary 
 
 class Habit:
-    """Class used to represent habits."""
+    """Class used to represent habits.
+    
+    Attributes:
+        habit_name (str) - name of habit
+        member (str) - indivdual member associated with a habit
+        category (str) - category habit is in ('health', 'work', 'leisure')
+        frequency (str) - frequency of habit ('daily' or 'weekly')
+        creation_timestamp (datetime) - date/time when habit was created
+    """
     
     def __init__(self, habit_name, member, category, frequency, creation_timestamp):
         """
@@ -31,7 +39,13 @@ class Habit:
 
 
 class User:
-    """docstring here"""
+    """This is the class of the user and functions related to the user
+    
+    Attributes: 
+        firstname (str): the first name of the user 
+        username (str): the username of the user 
+        password (str): the password of the user 
+    """
     def __init__(self, firstname, username, password):
         self.firstname = firstname
         self.username = username
