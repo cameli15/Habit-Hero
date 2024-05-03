@@ -2,14 +2,14 @@ import userhabit
 import hashlib
 import sqlite3
 import questionary
-from os.path import join, dirname, abspath    
+from pathlib import Path  
 
 def register_user():
     """ This function allows the user to register an account for them
 
-        Side effects: 
-            Creating the firstname, username, and password and putting it in 
-            the database
+        Effects: 
+            Creates the firstname, username, and password and puts it  
+            into the database
     """
     firstname = questionary.text("What is your first name? ",
                                  validate=None).ask()
@@ -43,7 +43,7 @@ def get_user(username):
         user: the user's password, first name and username
         None
     """
-    db_path = join(dirname(abspath(__file__)), 'main_db.db')
+    db_path = Path(__file__).resolve().parent / 'habithero_db.db'
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 
@@ -86,7 +86,7 @@ def check_password(password):
     that is saved into the database. If it doesn't match, then it will loop 
     until it does.
 
-    Args: 
+    Parameters:
         password (str): the password that the user inputed
     """
 
