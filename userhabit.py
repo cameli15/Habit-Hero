@@ -77,9 +77,18 @@ class User:
         self.conn.commit()
         
     def check_habit(self, habit_name):
-        """docstring here"""
+        """This function checks to see if the user has been doing that habit
+           under the username.
+
+        Returns: 
+            habits: the habit entry associated with the user in the database
+            None: this is just in case, the function couldn't find the habit for
+                the user 
+        """
         self.cur.execute(f"SELECT * FROM habits WHERE habit_name = '{habit_name}' AND member = '{self.username}';")
         habits_in_db = self.cur.fetchall()
+
+        # checking if the habit does exist for the user
         if len(habits_in_db) > 0:
             habit_name, member, category, frequency, creation_timestamp = habits_in_db[0]
             habits = Habit(habit_name, member, category, frequency, creation_timestamp)
@@ -88,7 +97,15 @@ class User:
             return None    
         
     def add_habit(self):
-        """docstring here"""
+        """This function allows the user to add a new habit for their account
+            as well as adding the habit into the database for future reference.
+
+        Args: 
+            self: the username entry and the habit entry associated with it
+
+        Returns: 
+            new_habit: the new habit entry created by the user
+        """
         
         habit_name = questionary.text("What is your new habit?",
                                       validate=None).ask()
@@ -110,8 +127,11 @@ class User:
         
         creation_timestamp = datetime.now()
         
+        #creates the new habit entry
         new_habit = Habit(habit_name, member, category, frequency, creation_timestamp)
         current_habits = self.check_habit(habit_name)
+
+        # checks to see if the habit entry already exists
         if current_habits:
             print("\nYou already have this habit!\n")
             self.add_habit()
@@ -120,9 +140,12 @@ class User:
             return new_habit
         
     def delete_habit(self):
-        """docstring here"""
+        """This function allows the user to delete a habit from their account
+        """
         habit_name = questionary.text("Which habit would you like to delete?",
                                       validate=None).ask()
+        
+        #check to see if the habit exists in the database 
         current_habits = self.check_habit(habit_name)
         if current_habits:
             self.cur.execute(f"DELETE FROM habits WHERE habit_name = '{habit_name}' AND member = '{self.username}';")
@@ -133,8 +156,14 @@ class User:
             print("\nThis habit doesn't exist!\n")
     
     def habit_completed(self):
-        """docstring here"""
+        """This function allows user to log in their entry for whether or not 
+            they did their habit for the day. 
         
+        Args: 
+            self: this is the user entry and the habit entry associated with it. 
+        
+        """
+    
         habit_completed = questionary.text("What habit do you want to mark as completed? ",
                                        validate=None).ask()
         
@@ -151,8 +180,13 @@ class User:
             print("Oops! This isn't one of your habits.")
     
     def show_all(self):
-        """
-        docstring here
+        """ This allows the user to see the habits that the user put into the 
+            database
+        Args: 
+            self: this is the user entry and the habit entry associated with it.
+        
+        Returns: 
+            habits: the habit entry associated with the suer
         """
         self.cur.execute(f"SELECT habit_name FROM habits WHERE member = '{self.username}';")
         items = self.cur.fetchall()
@@ -164,7 +198,15 @@ class User:
             
             
     def store_habit_in_db(self, new_habit):
-        """docstring here"""
+        """this function allows us to store the habit into the database
+        
+        Args: 
+            self: this is the user entry and the habit entry associated with it.
+
+        Returns: 
+            new_habit: this is the new habit entry that must be added into the 
+                database
+        """
         self.cur.execute("INSERT INTO habits VALUES (?, ?, ?, ?, ?)",
                     (new_habit.habit_name, new_habit.member, new_habit.category, new_habit.frequency, new_habit.creation_timestamp))
         self.conn.commit()
