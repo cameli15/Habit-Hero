@@ -25,10 +25,7 @@ Walkthrough
 
 To use Habit Hero, follow these steps:
 
-Clone the repository to your local machine.
-
-Install the required dependencies by running pip install -r requirements.txt.
-
-Run the program by executing python main.py.
-
-Follow the on-screen prompts to register/login and manage your habits.
+-Clone the repository to your local machine.
+-Install the required dependencies by running pip install -r requirements.txt.
+-Run the program by executing python main.py.
+-Follow the on-screen prompts to register/login and manage your habits.
