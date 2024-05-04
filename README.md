@@ -21,3 +21,14 @@ Files
 
 -main.py: This is the main entry point for the Habit Hero program. It orchestrates the interaction between users, their habits, and the database. It provides a user-friendly interface for managing habits.
 
+Walkthrough
+
+To use Habit Hero, follow these steps:
+
+Clone the repository to your local machine.
+
+Install the required dependencies by running pip install -r requirements.txt.
+
+Run the program by executing python main.py.
+
+Follow the on-screen prompts to register/login and manage your habits.
