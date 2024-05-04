@@ -5,11 +5,12 @@ import database_manager
 
 def program_menu():
     """
-    This is the menu of the Habit Hero program
+    This is to display the meny for the Habit Hero program. This function prompts
+    the user for initial actions, such as registration or login.
     
     Returns: 
         user: the user's first name, username and password 
-        None
+        None: If the users chooses to exit
     """
     database_manager.launch_database() #connects file to database
     
@@ -58,16 +59,18 @@ def program_menu():
 
 def main():
     """
-    This is the main function
+    This is the main function to run the Habit Hero program. It handles the flow
+    of the program, such as displaying the menu and executing the user's actions
     
     Raises: 
-        Exception e: If there is an error somehow
+        Exception e: If an error occurs during program execution
     """
     try:
-        user = program_menu()
+        user = program_menu() # starts the program
         if not user:
             return  # User chose to exit or failed to login/register
 
+        # Display the main meny
         while True:
             menu_question = questionary.select("What would you like to do?",
                                                choices=[
@@ -77,7 +80,8 @@ def main():
                                                ]).ask()
             if menu_question == "View Habits":
                 print("Let's take a look!\n")
-                user.show_all()
+                # Display all habits for the user
+                user.show_all() 
         
             elif menu_question == "Add, Delete, or Mark a Habit as complete":
                 habit_choice = questionary.select("What would you like to do?",
