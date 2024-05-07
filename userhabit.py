@@ -174,7 +174,7 @@ class User:
 
         if current_habits:
             creation_timestamp = datetime.now()
-            self.cur.execute("INSERT INTO progress VALUES(?, ?, ?, ?)",
+            self.cur.execute("INSERT INTO habit_data VALUES(?, ?, ?, ?)",
                              (current_habits.habit_name, current_habits.frequency, self.username,
                               creation_timestamp))
             self.conn.commit()
