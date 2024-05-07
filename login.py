@@ -59,7 +59,6 @@ def get_user(username):
     else:
         return None
 
-
 def login():
     """
     This is for the user to login with their username and password
@@ -78,7 +77,6 @@ def login():
     else: 
         print("\nWrong username! Try again\n")
         login()
-
 
 def check_password(password):
     """
