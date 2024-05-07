@@ -70,7 +70,7 @@ def main():
         if not user:
             return  # User chose to exit or failed to login/register
 
-        # Display the main meny
+        # Display the main menu
         while True:
             menu_question = questionary.select("What would you like to do?",
                                                choices=[
