@@ -24,7 +24,7 @@ class TestUserManagement(unittest.TestCase):
         Test the register_user function.
         """
         # Set up mock objects and side effects
-        mock_text.side_effect = [MagicMock(ask=lambda: 'John Doe'), MagicMock(ask=lambda: 'johndoe')]
+        mock_text.side_effect = [MagicMock(ask=lambda: 'User Test'), MagicMock(ask=lambda: 'testing')]
         mock_password.return_value = MagicMock(ask=lambda: 'password123')
         hashed_password = MagicMock(hexdigest=lambda: 'hashed_password')
         mock_sha256.return_value = hashed_password
@@ -37,7 +37,7 @@ class TestUserManagement(unittest.TestCase):
 
         # Assert database interactions
         self.mock_cursor.execute.assert_called_with("INSERT INTO users VALUES (?, ?, ?)",
-                                                    ('John Doe', 'johndoe', 'hashed_password'))
+                                                    ('User Test', 'testing', 'hashed_password'))
         self.mock_conn.commit.assert_called()
 
     def test_get_user(self):
@@ -45,15 +45,15 @@ class TestUserManagement(unittest.TestCase):
         Test the get_user function.
         """
         # Mock database response
-        self.mock_cursor.fetchall.return_value = [('John Doe', 'johndoe', 'hashed_password')]
+        self.mock_cursor.fetchall.return_value = [('User Test', 'testing', 'hashed_password')]
 
         # Call the function to be tested
-        user = login.get_user('johndoe')
+        user = login.get_user('testing')
 
         # Assert database interactions and returned user object
-        self.mock_cursor.execute.assert_called_with("SELECT * FROM users WHERE username = 'johndoe'")
+        self.mock_cursor.execute.assert_called_with("SELECT * FROM users WHERE username = 'testing'")
         self.assertIsNotNone(user)
-        self.assertEqual(user.username, 'johndoe')
+        self.assertEqual(user.username, 'testing')
 
     @patch('login.questionary.text')
     @patch('login.check_password')
@@ -62,10 +62,10 @@ class TestUserManagement(unittest.TestCase):
         Test the login function.
         """
         # Set up mock objects and side effects
-        mock_text.return_value = MagicMock(ask=lambda: 'johndoe')
+        mock_text.return_value = MagicMock(ask=lambda: 'testing')
 
         # Mock database response
-        self.mock_cursor.fetchall.return_value = [('John Doe', 'johndoe', 'hashed_password')]
+        self.mock_cursor.fetchall.return_value = [('User Test', 'testing', 'hashed_password')]
 
         # Call the function to be tested
         login.login()
