@@ -113,5 +113,21 @@ class TestUser(unittest.TestCase):
         )
         self.mock_conn.commit.assert_called()
 
+    def test_adding_habit(self): 
+        habit_name = "Lifting"
+        category = "Health"
+        frequency = "Daily"
+
+        #Call the add_habit with the new habit 
+        new_habit = self.user.add_habit(habit_name, self.username, 
+                                        category, frequency) 
+        
+        self.assertIsInstance(new_habit, Habit)
+        self.assertEqual(new_habit.habit_name, "Lifting")
+        self.assertEqual(new_habit.member, 'Test')
+        self.asserEqual(new_habit.category, 'Health')
+        self.assertEqual(new_habit.frequency, 'Daily')
+        self.assertIsInstance(new_habit.creation_timestamp, datetime)
+
 if __name__ == '__main__':
     unittest.main()
