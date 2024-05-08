@@ -126,5 +126,11 @@ class TestUser(unittest.TestCase):
         self.assertEqual(new_habit.frequency, 'Daily')
         self.assertIsInstance(new_habit.creation_timestamp, datetime)
     
+    def test_delete_habit(self): 
+        """
+        """
+    
+    def test_habit_completed(self): 
+
 if __name__ == '__main__':
     unittest.main()
