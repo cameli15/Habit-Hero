@@ -4,6 +4,10 @@ import re
 from database_manager import launch_database
 
 class TestDatabaseOperations(unittest.TestCase):
+    """
+    This is the class to test the database operations using the database_manager
+        module. 
+    """
     @patch('database_manager.sqlite3.connect')
     def test_launch_database_creates_tables(self, mock_connect):
         """

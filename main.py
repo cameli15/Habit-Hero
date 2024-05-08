@@ -2,7 +2,6 @@ import questionary
 import login
 import database_manager
 
-
 def program_menu():
     """
     This is to display the meny for the Habit Hero program. This function prompts
@@ -56,7 +55,6 @@ def program_menu():
             print("Exiting the program.")
             return None
 
-
 def main():
     """
     This is the main function to run the Habit Hero program. It handles the flow
@@ -107,8 +105,7 @@ def main():
                 break  
         
     except Exception as e:
-        print(f"An error occurred: {e}")
-            
+        print(f"An error occurred: {e}")  
             
 if __name__ == "__main__":
     main()

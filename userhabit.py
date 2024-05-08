@@ -37,7 +37,6 @@ class Habit:
         self.conn = sqlite3.connect(str(db_path))
         self.cur = self.conn.cursor()
 
-
 class User:
     """This is the class of the user and functions related to the user
     

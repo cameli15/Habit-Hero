@@ -87,7 +87,6 @@ def check_password(password):
     Parameters:
         password (str): the password that the user inputed
     """
-
     password_input = questionary.password("Enter your password: ").ask()
     password_input = hashlib.sha256(password_input.encode('utf-8')).hexdigest()
 
