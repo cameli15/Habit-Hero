@@ -113,24 +113,31 @@ class TestUser(unittest.TestCase):
         )
         self.mock_conn.commit.assert_called()
 
-    @patch("questionary.text", return_value = "Lifting")
-    @patch("questionary.select", side_effect = ["Health", "Daily"])
+    @patch("userhabit.questionary.text")
+    @patch("userhabit.questionary.select")
     def test_adding_habit(self, mock_select, mock_text): 
+        mock_text.return_value.ask.return_value = "Lifting"
+        mock_select.return_value.ask.side_effect = ["Health", "Daily"]
+
         #Call the add_habit with the new habit 
         new_habit = self.user.add_habit() 
         
         self.assertIsInstance(new_habit, Habit)
         self.assertEqual(new_habit.habit_name, "Lifting")
-        self.assertEqual(new_habit.member, 'Test')
+        self.assertEqual(new_habit.member, 'test123')
         self.assertEqual(new_habit.category, 'Health')
         self.assertEqual(new_habit.frequency, 'Daily')
         self.assertIsInstance(new_habit.creation_timestamp, datetime)
     
     def test_delete_habit(self): 
         """
+        Testing the delete habit function
         """
     
     def test_habit_completed(self): 
+        """
+        Testing the habit completed function
+        """
 
 if __name__ == '__main__':
     unittest.main()
