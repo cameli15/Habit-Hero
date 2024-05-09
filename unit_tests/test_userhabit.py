@@ -125,6 +125,7 @@ class TestUser(unittest.TestCase):
         #Call the add_habit with the new habit 
         new_habit = self.user.add_habit() 
         
+        # Asserting that the habit exists
         self.assertIsInstance(new_habit, Habit)
         self.assertEqual(new_habit.habit_name, "Lifting")
         self.assertEqual(new_habit.member, 'test123')
@@ -146,6 +147,7 @@ class TestUser(unittest.TestCase):
         self.user.show_all()
         self.user.delete_habit()
 
+        # Checking to see if it exists anymore
         self.assertIsNot(new_habit, Habit)
     
     @patch("userhabit.questionary.text")
@@ -172,8 +174,6 @@ class TestUser(unittest.TestCase):
         self.user.habit_completed()
 
         self.assertEqual(mock_text.call_count, 0)
-        
-        
 
 if __name__ == '__main__':
     unittest.main()
