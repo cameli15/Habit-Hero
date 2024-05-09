@@ -40,9 +40,12 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
 **Works Cited** 
 *used as reference for libraries and modules used throughout code*
 
-https://docs.python.org/3/library/sqlite3.html
-https://stackoverflow.com/questions/21005822/what-does-os-path-abspathos-path-joinos-path-dirname-file-os-path-pardir 
-https://questionary.readthedocs.io/en/stable/pages/types.html#text 
-https://docs.python.org/3/library/hashlib.html 
-https://docs.python.org/3/library/os.path.html 
-https://pypi.org/project/questionary/#features 
+- https://docs.python.org/3/library/sqlite3.html
+  
+- https://stackoverflow.com/questions/21005822/what-does-os-path-abspathos-path-joinos-path-dirname-file-os-path-pardir
+  
+- https://questionary.readthedocs.io/en/stable/pages/types.html#text
+  
+- https://docs.python.org/3/library/hashlib.html 
+- https://docs.python.org/3/library/os.path.html 
+- https://pypi.org/project/questionary/#features 
