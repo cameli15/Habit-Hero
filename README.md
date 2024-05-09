@@ -62,7 +62,7 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
 
 
 ### Works Cited
-*used as reference for libraries and modules used throughout code*
+*Sources used as reference for libraries and modules used throughout our code.*
 
 - https://docs.python.org/3/library/sqlite3.html
   
