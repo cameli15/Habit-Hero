@@ -13,6 +13,7 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 
 ## Files 
 
+**Main Files for Program**
 * <ins>userhabit.py</ins>: This file defines the Habit class, which represents a habit and its attributes as well as the User class, which represents a user and their attributes. The habit class includes methods for interacting with the SQLite database to manage habits and the User class ncludes methods for user registration, login, and managing habits.
 
 * <ins>login.py</ins>: This file contains functions for user registration, login, and password verification through code lines of questionary.
@@ -21,8 +22,25 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 
 * <ins>main.py</ins>: This is the main entry point for the Habit Hero program. It orchestrates the interaction between users, their habits, and the database. It provides a user-friendly interface for managing habits.
 
-**Other Files**
-* 
+**Unit Test Folder**
+<ins>This folder contains our unit tests for the different classes, methods, and functions within our program's code</ins>
+
+* test_database_manager.py
+* test_userhabit.py
+* test_login.py
+* test_main.py
+
+  - To run these tests, make sure that they are in the same parent directory as the main files of the program.
+
+**Habit Hero Data Folder**
+<ins>This folder contains sample data collected in our habithero_db.db from testing our program. There are three different tables created and stored.</ins>
+
+* habits.db: contains all users habits that they add
+* habit_data.db: contains all the progress of users as they mark their habits as complete
+* users.db: contains all registered users information
+* habithero_db.db: overall database that contains all of the tables.
+
+  - You must have sqlite3 installed to run the database and view its contents
 ## Walkthrough
 
 To use Habit Hero, follow these steps:
