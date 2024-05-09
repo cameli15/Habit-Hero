@@ -62,7 +62,7 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
    - Once you register an account, you must reexecute the main.py file and continue adding or managing your habits.
 
 
-### Works Cited
+## Works Cited
 *Sources used as reference for libraries and modules used throughout our code.*
 
 - https://docs.python.org/3/library/sqlite3.html
