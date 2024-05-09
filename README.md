@@ -59,6 +59,7 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
 5. Then to run the program for use, run the *main.py* file and use the program from the command line.
 
 6. Follow the on-screen prompts to register/login and manage your habits.
+   - Once you register an account, you must reexecute the main.py file and continue adding or managing your habits.
 
 
 ### Works Cited
