@@ -13,7 +13,7 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 
 **Files**
 
--userhabit.py: This file defines the Habit class, which represents a habit and its attributes as well as the User class, which represents a user and their attributes. The habit class includes methods for interacting with the SQLite database to manage habits and the User class ncludes methods for user registration, login, and managing habits.
+* userhabit.py: This file defines the Habit class, which represents a habit and its attributes as well as the User class, which represents a user and their attributes. The habit class includes methods for interacting with the SQLite database to manage habits and the User class ncludes methods for user registration, login, and managing habits.
 
 -login.py: This file contains functions for user registration, login, and password verification through code lines of questionary.
 
@@ -30,10 +30,11 @@ To use Habit Hero, follow these steps:
 2. Install the required dependencies by running pip install questionary and sqlite3 should already be a part of your Python if not, you can install it following these instructions:
 https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to-python
 
-3. Run the program by first executing the other files to initialize the database and classes. Then to run the program, run the main.py file last and use the program from the command line.
+3. Run the program by first executing the other files *(database_manager.py, userhabit.py and, login.py)* to initialize the database and classes.
+   
+5. Then to run the program for use, run the main.py file and use the program from the command line.
 
-3. Follow the on-screen prompts to register/login and manage your habits.
-
+6. Follow the on-screen prompts to register/login and manage your habits.
 
 
 **Works Cited** 
