@@ -13,7 +13,7 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 
 **Files**
 
-* userhabit.py: This file defines the Habit class, which represents a habit and its attributes as well as the User class, which represents a user and their attributes. The habit class includes methods for interacting with the SQLite database to manage habits and the User class ncludes methods for user registration, login, and managing habits.
+* <ins>userhabit.py</ins>: This file defines the Habit class, which represents a habit and its attributes as well as the User class, which represents a user and their attributes. The habit class includes methods for interacting with the SQLite database to manage habits and the User class ncludes methods for user registration, login, and managing habits.
 
 -login.py: This file contains functions for user registration, login, and password verification through code lines of questionary.
 
