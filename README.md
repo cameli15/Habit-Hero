@@ -21,6 +21,8 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 
 * <ins>main.py</ins>: This is the main entry point for the Habit Hero program. It orchestrates the interaction between users, their habits, and the database. It provides a user-friendly interface for managing habits.
 
+## Other Files in Repository
+* 
 **Walkthrough**
 
 To use Habit Hero, follow these steps:
