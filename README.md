@@ -34,6 +34,7 @@ To use Habit Hero, follow these steps:
 -Follow the on-screen prompts to register/login and manage your habits.
 
 Works Cited (used as reference for libraries and modules used throughout code)
+
 https://docs.python.org/3/library/sqlite3.html
 https://stackoverflow.com/questions/21005822/what-does-os-path-abspathos-path-joinos-path-dirname-file-os-path-pardir 
 https://questionary.readthedocs.io/en/stable/pages/types.html#text 
