@@ -72,7 +72,7 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
 - https://pypi.org/project/questionary/#features
 
 
-### Group 17
+### INST 326 (0201) - Group 17
 - Cinthia Contreras
 - Lakshya Sajal Kumar
 - Linaly Jaqueline Miyamoto
