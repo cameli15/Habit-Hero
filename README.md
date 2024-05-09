@@ -53,7 +53,7 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
 
 3. Run the program by first executing the other files *(database_manager.py, userhabit.py and, login.py)* to initialize the database and classes.
    
-5. Then to run the program for use, run the main.py file and use the program from the command line.
+5. Then to run the program for use, run the *main.py* file and use the program from the command line.
 
 6. Follow the on-screen prompts to register/login and manage your habits.
 
