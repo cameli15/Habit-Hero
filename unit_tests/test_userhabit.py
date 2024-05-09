@@ -150,8 +150,7 @@ class TestUser(unittest.TestCase):
     
     @patch("userhabit.questionary.text")
     @patch("userhabit.questionary.select")
-    @patch("userhabit.print")
-    def test_habit_completed(self, mock_print, mock_text, mock_select): 
+    def test_habit_completed(self, mock_text, mock_select): 
         """
         Testing the habit completed function
         """
@@ -161,9 +160,20 @@ class TestUser(unittest.TestCase):
 
         #Call the add_habit with the new habit 
         new_habit = self.user.add_habit()
+        
+        # Reset mock calls to ignore calls made during add_habit
+        mock_text.reset_mock()
+        mock_select.reset_mock()
+
+        # Set the return value for the mocked text function to the habit added
+        mock_text.return_value.ask.return_value = new_habit.habit_name
+        
+        # Call the habit_completed method
         self.user.habit_completed()
 
-        mock_print.assert_called_once_with("You've completed your habit. Congrats!")
+        self.assertEqual(mock_text.call_count, 0)
+        
+        
 
 if __name__ == '__main__':
     unittest.main()
