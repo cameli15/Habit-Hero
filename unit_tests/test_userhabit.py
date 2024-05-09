@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, Mock
 from userhabit import User, Habit
 from datetime import datetime
 
@@ -129,15 +129,38 @@ class TestUser(unittest.TestCase):
         self.assertEqual(new_habit.frequency, 'Daily')
         self.assertIsInstance(new_habit.creation_timestamp, datetime)
     
-    def test_delete_habit(self): 
+    @patch("userhabit.questionary.text")
+    @patch("userhabit.questionary.select")
+    def test_delete_habit(self, mock_text, mock_select): 
         """
         Testing the delete habit function
         """
+        mock_text.return_value.ask.return_value = "Lifting"
+        mock_select.return_value.ask.side_effect = ["Health", "Daily"]
+
+        #Call the add_habit with the new habit 
+        new_habit = self.user.add_habit()
+        self.user.show_all()
+        self.user.delete_habit()
+
+        self.assertIsNot(new_habit, Habit)
     
-    def test_habit_completed(self): 
+    @patch("userhabit.questionary.text")
+    @patch("userhabit.questionary.select")
+    @patch("userhabit.print")
+    def test_habit_completed(self, mock_print, mock_text, mock_select): 
         """
         Testing the habit completed function
         """
+        # Set the return value for the mocked text function
+        mock_text.return_value.ask.return_value = "Lifting"
+        mock_select.return_value.ask.side_effect = ["Health", "Daily"]
+
+        #Call the add_habit with the new habit 
+        new_habit = self.user.add_habit()
+        self.user.habit_completed()
+
+        mock_print.assert_called_once_with("You've completed your habit. Congrats!")
 
 if __name__ == '__main__':
     unittest.main()
