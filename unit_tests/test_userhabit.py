@@ -116,6 +116,9 @@ class TestUser(unittest.TestCase):
     @patch("userhabit.questionary.text")
     @patch("userhabit.questionary.select")
     def test_adding_habit(self, mock_select, mock_text): 
+        """
+        Test adding a habit to the user
+        """
         mock_text.return_value.ask.return_value = "Lifting"
         mock_select.return_value.ask.side_effect = ["Health", "Daily"]
 
