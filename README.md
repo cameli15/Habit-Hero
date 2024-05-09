@@ -24,25 +24,27 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 
 **Unit Test Folder**
 
-*This folder contains our unit tests for the different classes, methods, and functions within our program's code</ins>*
+*This folder contains our unit tests for the different classes, methods, and functions within our program's code. 
+To run these tests, make sure that they are in the same parent directory as the main files of the program.*
 
 * test_database_manager.py
 * test_userhabit.py
 * test_login.py
 * test_main.py
 
-*To run these tests, make sure that they are in the same parent directory as the main files of the program.*
+
 
 **Habit Hero Data Folder**
 
 *This folder contains sample data collected in our habithero_db.db from testing our program. There are three different tables created and stored.*
+*You must have sqlite3 installed to run the database and view its contents*
 
 * habits.db: contains all users habits that they add
 * habit_data.db: contains all the progress of users as they mark their habits as complete
 * users.db: contains all registered users information
 * habithero_db.db: overall database that contains all of the tables.
 
-*You must have sqlite3 installed to run the database and view its contents*
+
 ## Walkthrough
 
 To use Habit Hero, follow these steps:
