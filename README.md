@@ -34,7 +34,8 @@ Habit Hero is a our Python program designed for our final INST 326 project. We d
 *To run these tests, make sure that they are in the same parent directory as the main files of the program.*
 
 **Habit Hero Data Folder**
-<ins>This folder contains sample data collected in our habithero_db.db from testing our program. There are three different tables created and stored.</ins>
+
+*This folder contains sample data collected in our habithero_db.db from testing our program. There are three different tables created and stored.*
 
 * habits.db: contains all users habits that they add
 * habit_data.db: contains all the progress of users as they mark their habits as complete
