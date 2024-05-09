@@ -1,4 +1,4 @@
-# Habit-Hero
+# Habit-Hero: Final Project Program
 Habit Hero is a our Python program designed for our final INST 326 project. We designed it with the intention of helping users manage their habits efficiently. It allows users to track their habits, add new ones, mark them as completed, and delete them as needed. The program utilizes SQLite for database management and provides a user-friendly interface for interaction with the use of the library questionary.
 
 **Features**
@@ -73,6 +73,7 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
 - https://docs.python.org/3/library/hashlib.html 
 - https://docs.python.org/3/library/os.path.html 
 - https://pypi.org/project/questionary/#features
+- https://www.browserstack.com/guide/unit-testing-python#:~:text=To%20run%20these%20test%20cases,python%20%2Dm%20unittest%20%2Dv.
 
 
 ### INST 326 (0201) - Group 17
