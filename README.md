@@ -69,4 +69,11 @@ https://stackoverflow.com/questions/19530974/how-can-i-add-the-sqlite3-module-to
   
 - https://docs.python.org/3/library/hashlib.html 
 - https://docs.python.org/3/library/os.path.html 
-- https://pypi.org/project/questionary/#features 
+- https://pypi.org/project/questionary/#features
+
+
+### Group 17
+- Cinthia Contreras
+- Lakshya Sajal Kumar
+- Linaly Jaqueline Miyamoto
+- Evan Carr
